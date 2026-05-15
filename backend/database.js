@@ -9,12 +9,11 @@ const db = new sqlite3.Database(path.join(__dirname, 'students.db'), (err) => {
 db.run(`CREATE TABLE IF NOT EXISTS students (
   id TEXT PRIMARY KEY,
   nom TEXT NOT NULL,
-  email TEXT UNIQUE NOT NULL,
+  email TEXT NOT NULL,
   telephone TEXT,
   adresse TEXT,
-  filiere TEXT NOT NULL,
-  niveau INTEGER NOT NULL CHECK(niveau BETWEEN 1 AND 5),
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  filiere TEXT,
+  niveau INTEGER
 )`);
 
 module.exports = db;
